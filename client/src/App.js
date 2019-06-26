@@ -6,15 +6,21 @@ class App extends Component {
   state = {
     bill: "",
     tip: "",
-    people: ""
+    people: "",
+    formErrors: {bill: '', tip: "", people: ""},
+    validBill: false,
+    validTip: false,
+    validPeople: false,
+    validForm: false
   }
-  handleChange = (e) => {
-    this.setState({bill: e.target.value})
+  handleChange = (event) => {
+    const{name, value} = event.target
+    this.setState({[name]: value})
     
   }
-  handlePeople = (e) => {
-    this.setState({people: e.target.value})
-  }
+  // handlePeople = (e) => {
+  //   this.setState({people: e.target.value})
+  // }
   Calc = (event) => {
     event.preventDefault()
     console.log(this.state)
@@ -28,11 +34,11 @@ class App extends Component {
           <form>
             <div className="form-group">
               <label htmlFor="bill">How much was your bill?</label><br />
-              $ <input type="text" className="form-control" id="bill" value={this.state.bill} onChange={this.handleChange}/>
+              $ <input type="text" name="bill" className="form-control" id="bill" value={this.state.bill} onChange={this.handleChange}/>
             </div>
             <div className="form-group">
               <label htmlFor="tip-percent">How was your service?</label><br />
-              <select className="form-control" id="tip-percent" required>
+              <select name="tip" onChange={this.handleChange} className="form-control" id="tip-percent" required>
                 <option disabled selected value> -- select an option -- </option>
                 <option>30% Outstanding</option>
                 <option>20% Good</option>
@@ -43,7 +49,7 @@ class App extends Component {
             </div>
             <div className="form-group">
               <label htmlFor="number of people">How many people are sharing the bill?</label><br />
-              <input type="text" className="form-control" id="people" value={this.state.people} onChange={this.handlePeople}/>
+              <input type="text" name="people" className="form-control" id="people" value={this.state.people} onChange={this.handleChange}/>
             </div>
             <button id="calc" onClick={this.Calc}>CALCULATE</button>
           </form>

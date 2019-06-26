@@ -3,19 +3,36 @@ import logo from "./logo.svg";
 import "./App.css";
 
 class App extends Component {
+  state = {
+    bill: "",
+    tip: "",
+    people: ""
+  }
+  handleChange = (e) => {
+    this.setState({bill: e.target.value})
+    
+  }
+  handlePeople = (e) => {
+    this.setState({people: e.target.value})
+  }
+  Calc = (event) => {
+    event.preventDefault()
+    console.log(this.state)
+    
+  }
   render() {
     return (
       <div className="App">
         <div className="calc">
           <h1>Tip Calculator</h1>
           <form>
-            <div class="form-group">
-              <label for="bill">How much was your bill?</label><br />
-              $ <input type="text" class="form-control" id="bill" />
+            <div className="form-group">
+              <label htmlFor="bill">How much was your bill?</label><br />
+              $ <input type="text" className="form-control" id="bill" value={this.state.bill} onChange={this.handleChange}/>
             </div>
-            <div class="form-group">
-              <label for="tip-percent">How was your service?</label><br />
-              <select class="form-control" id="tip-percent">
+            <div className="form-group">
+              <label htmlFor="tip-percent">How was your service?</label><br />
+              <select className="form-control" id="tip-percent" required>
                 <option disabled selected value> -- select an option -- </option>
                 <option>30% Outstanding</option>
                 <option>20% Good</option>
@@ -24,11 +41,11 @@ class App extends Component {
                 <option>5% Terrible</option>
               </select>
             </div>
-            <div class="form-group">
-              <label for="number of people">How many people are sharing the bill?</label><br />
-              <input type="text" class="form-control" id="people" />
+            <div className="form-group">
+              <label htmlFor="number of people">How many people are sharing the bill?</label><br />
+              <input type="text" className="form-control" id="people" value={this.state.people} onChange={this.handlePeople}/>
             </div>
-            <button>CALCULATE</button>
+            <button id="calc" onClick={this.Calc}>CALCULATE</button>
           </form>
         </div>
       </div>

@@ -7,24 +7,39 @@ class App extends Component {
     bill: "",
     tip: "",
     people: "",
-    formErrors: {bill: '', tip: "", people: ""},
+    amount: "",
+    errors: {bill: '', tip: "", people: ""},
     validBill: false,
     validTip: false,
     validPeople: false,
     validForm: false
   }
   handleChange = (event) => {
-    const{name, value} = event.target
+    const{name, value} = event.target;
+    let errors = this.state.errors;
+    // switch (name) {
+    //   case "bill": 
+    //     errors.bill = 
+    //       (parseInt(value)<5)
+    //         ? "Bill error"
+    //         : "" 
+    // }
     this.setState({[name]: value})
-    
+    // https://www.telerik.com/blogs/up-and-running-with-react-form-validation
   }
   // handlePeople = (e) => {
   //   this.setState({people: e.target.value})
   // }
   Calc = (event) => {
     event.preventDefault()
+    let bill = parseFloat(this.state.bill);
+    let tip = parseFloat("." + this.state.tip);
+    let people = parseFloat(this.state.people)
+    let result = (bill*tip)/people
     console.log(this.state)
-    
+    console.log(tip)
+    console.log("result:" + result)
+    this.setState({amount: result})
   }
   render() {
     return (
@@ -53,6 +68,11 @@ class App extends Component {
             </div>
             <button id="calc" onClick={this.Calc}>CALCULATE</button>
           </form>
+          <div id="results">
+            <h2>Tip Amount:</h2>
+            <p>$ {this.state.amount}</p>
+            <p>each</p>
+          </div>
         </div>
       </div>
     );

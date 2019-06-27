@@ -39,7 +39,7 @@ class App extends Component {
     console.log(this.state)
     console.log(tip)
     console.log("result:" + result)
-    this.setState({amount: result})
+    this.setState({amount: parseFloat(result)})
   }
   render() {
     return (

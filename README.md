@@ -1,10 +1,25 @@
 # Create React Express App
 
-## About This Boilerplate
+## Deployed Site:
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+## About
+It's always tricky to know how much to tip, unless you're an arithmetic mastermind! This app 
+* Takes in the value of the bill
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+
+* Takes in the desired tip percentage
+
+
+* Includes the option to split the tip amount by number of people at the table
+
+ 
+
+* Calculates the amount of tip per table (or per person if the split option is chosen) and return that value to the user.
+
+## Technologies used
+* React
+* Javascript
+* Bootstrap
 
 ## Starting the app locally
 
